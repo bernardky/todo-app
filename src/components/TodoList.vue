@@ -43,7 +43,7 @@
           todo.importance == 3 ? ' border-yellow-400' : '',
           todo.importance == 4 ? ' border-green-400' : '',
           todo.completed ? 'line-through opacity-30' : '',
-          'border-l-8 pl-4',
+          'border-l-8 pl-4 border-solid',
         ]"
       >
         {{ todo.title }}
@@ -83,9 +83,13 @@
         Mark All Complete
       </p>
       <div class="flex">
-        <p class="px-4 border-l-8 border-red-400">Very Important</p>
-        <p class="px-4 border-l-8 border-yellow-400">Important</p>
-        <p class="px-4 border-l-8 border-green-400">Less Important</p>
+        <p class="px-4 border-l-8 border-red-400 border-solid">
+          Very Important
+        </p>
+        <p class="px-4 border-l-8 border-yellow-400 border-solid">Important</p>
+        <p class="px-4 border-l-8 border-green-400 border-solid">
+          Less Important
+        </p>
       </div>
       <p class="italic">{{ remainingTodos }} {{ itemString }} left</p>
     </div>
