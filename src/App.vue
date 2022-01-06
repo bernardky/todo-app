@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-screen bg-gray-700 text-center text-white">
+  <div
+    class="w-full h-screen bg-gray-700 text-center text-white overflow-x-hidden"
+  >
     <div class="p-12 max-w-2xl mx-auto"><TodoList /></div>
   </div>
 </template>

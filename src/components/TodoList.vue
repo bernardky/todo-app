@@ -43,16 +43,16 @@
           todo.importance == 3 ? ' border-yellow-400' : '',
           todo.importance == 4 ? ' border-green-400' : '',
           todo.completed ? 'line-through opacity-30' : '',
-          'border-l-8 pl-4 border-solid',
+          'border-l-8 pl-4 border-solid text-left w-2/3 ',
         ]"
       >
         {{ todo.title }}
       </div>
-      <div>
+      <div class="flex flex-col md:flex-row items-end md:items-center">
         <select
           @change="selectedImportance(index, $event)"
           name="importance"
-          class="bg-gray-700 text-xs text-right"
+          class="bg-gray-700 text-xs text-right my-2"
         >
           <option disabled selected value style="display: none"></option>
           <option disabled value="1">Select One</option>
@@ -60,15 +60,17 @@
           <option value="3">Important</option>
           <option value="4">Less Important</option>
         </select>
-        <i
-          class="fa-solid fa-check px-4 hover:text-green-400"
-          @click="completeTodo(index)"
-        ></i>
+        <div>
+          <i
+            class="fa-solid fa-check hover:text-green-400 mx-2"
+            @click="completeTodo(index)"
+          ></i>
 
-        <i
-          class="fas fa-times cursor-pointer hover:text-red-400"
-          @click="removeTodo(index)"
-        ></i>
+          <i
+            class="fas fa-times cursor-pointer hover:text-red-400 mx-2"
+            @click="removeTodo(index)"
+          ></i>
+        </div>
       </div>
     </div>
 
@@ -117,6 +119,16 @@ export default {
   },
 
   methods: {
+    //jsonplaceholder API
+    async fetchTodos() {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10"
+      );
+      const data = await response.json();
+      console.log(data);
+      this.todos = data;
+    },
+
     addTodo() {
       if (this.newTodo != "") {
         this.todos.push({
@@ -196,6 +208,8 @@ export default {
         localStorage.removeItem("todos");
       }
     }
+
+    this.fetchTodos();
   },
 };
 </script>
